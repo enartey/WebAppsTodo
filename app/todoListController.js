@@ -1,9 +1,12 @@
-define(["jquery", "./structures/mixin", "./structures/newClass"],
-function($, mixin, newClass) {
+define(["jquery", "./template", "./structures/mixin", "./structures/newClass"],
+function($, template, mixin, newClass) {
 
    // Controller for a todoList
 
    var TodoController;
+   // The `template` variable is a function that expects an object
+   // that contains a `todos` property that in turn contains an
+   // array of todos.
 
    TodoController = newClass(function init(todos, element) {
       this.todos = todos // A TodoList instance
@@ -19,8 +22,10 @@ function($, mixin, newClass) {
    mixin(TodoController.prototype, {
       render: function() {
          // Responsible for updating the interface
-         // Will probably use a template
+         // Will probably use the `template` function
          // Sets the `this.el`'s contents
+         // Could be as simple as:
+         // this.el.html(template({ todos: this.todos }));
       },
       toggleCompleted: function(el) {
          // In response to user asking to toggle completion of element
