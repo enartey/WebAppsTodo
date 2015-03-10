@@ -1,12 +1,13 @@
-define(["./structures", "./todoStorage", "./todoTask", "./structures/event"],
-function(structures, TodoStorage, TodoTask, Event) {
+define(["./structures", "./todoStorage", "./todoTask"],
+function(structures, TodoStorage, TodoTask) {
 
 // Model for a todoTask collection
 
-   var mixin, newClass;
+   var mixin, newClass, Event;
 
    mixin = structures.mixin;
    newClass = structures.newClass;
+   Event = structures.Event;
 
    TodoList = newClass(function init() {
       this.tasks = TodoStorage.fetch();
