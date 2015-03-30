@@ -1,20 +1,11 @@
-{{! Template for the contents of the todoList element }}
-{{! Expects to be given a context with a property todos that is an array }}
-{{! Loaded via template.js }}
+{{! Will be called with a model object }}
+{{! Loaded directly in controller.js }}
 
-<ul>
-{{#each todos}}
-   <li class="todo{{#if isCompleted}} completed{{/if}}">
-   {{! The input element for editing. Hidden by default. }}
-   <input class="edit hidden" type="input" />
-   {{! Checkbox to indicate if task completed or not }}
-   <input type="checkbox" {{#if isCompleted}}checked="checked"{{/if}} />
-   <span>{{text}}</span>
-   {{#if isCompleted}}
-   {{! We could use a custom helper here to make date appear nicer }}
-   <small>Completed on {{completionDate}}</small>
-   {{/if}}
-   <input type="button" value="delete" />
-   </li>
-{{/each}}
-</ul>
+Test text
+
+{{! TODO: Input box with value from x }}
+{{! TODO: Operator pulldown list }}
+{{! TODO: Input box with value from y }}
+
+{{! TODO: Equal sign }}
+{{! TODO: Result }}
