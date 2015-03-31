@@ -1,5 +1,5 @@
 // TODO: Need to install the text plugin
-define(["jquery", "handlebars", "text!../template.handlebars"],
+define(["jquery", "handlebars", "text!./template.handlebars"],
 
 function($, Handlebars, tmplText) {
 

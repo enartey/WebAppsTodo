@@ -28,6 +28,12 @@ define(function() {
       });
    }
 
+   function objectify(key, value) {
+      var o = {};
+      o[key] = value;
+      return o;
+   }
+
    Model.prototype = {
       // TODO: Compute sets result based on the other settings
       compute: function() {
@@ -36,12 +42,23 @@ define(function() {
       // TODO: Set x, y, operator as appropriate
       // Should accept either key/value or an object
       // Should also call compute
+      // Validate
       set: function(key, value) {
-
+         if (arguments.length > 1) {
+            key = objectify(key, value);
+         }
+         // From this point on: key is an object of key-value pairs
+         console.log("object:", key);
+         if (!this.validate(key)) {
+            
+         }
       // TODO: Should we somehow notify someone?
       },
       // TODO: Just return value at key
       get: function(key) {
+
+      },
+      validate: function(changes) {
 
       }
    };
