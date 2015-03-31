@@ -2,6 +2,7 @@
 // Called from require.js
 
 require.config({
+   baseUrl: "app",
    paths: {
       "jquery": "../lib/jquery",
       "handlebars": "../lib/handlebars-v3.0.0"
@@ -20,7 +21,9 @@ function($, Model, Controller) {
       console.log("Controller Constructor:", Controller);
 
       // TODO: Create a model instance
-
+      model = new Model();
+      model.set("x", 4);
+      console.log(model);
       // TODO: Create a controller instance
 
    });
