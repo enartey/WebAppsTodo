@@ -21,6 +21,7 @@ define(function() {
    function Model() {
       // The two operands
       this.operators = operators.all();
+      this.events = {};
       this.set({
          x: Math.random(),
          y: Math.random(),
@@ -44,22 +45,51 @@ define(function() {
       // Should also call compute
       // Validate
       set: function(key, value) {
-         if (arguments.length > 1) {
-            key = objectify(key, value);
+         var changes;
+
+         changes = arguments.length > 1
+                 ? objectify(key, value)
+                 : key;
+
+         console.log("object:", changes);
+         if (!this.validate(changes)) {
+            this.trigger('error', this);
+            return this;
          }
-         // From this point on: key is an object of key-value pairs
-         console.log("object:", key);
-         if (!this.validate(key)) {
-            
+         for (key in changes) {
+            if (changes.hasOwnProperty(key)) {
+               this[key] = changes[key];
+            }
          }
-      // TODO: Should we somehow notify someone?
+         this.compute();
+         this.trigger('change', this);
+         return this;
       },
-      // TODO: Just return value at key
+      // Just return value at key
       get: function(key) {
-
+         return this[key];
       },
+      // TODO: Implement
       validate: function(changes) {
-
+         return true;
+      },
+      // Simple event system
+      // 1. this.events object initialized at constructor
+      // 2. on(event, handler, context)
+      // 3. trigger(event, data)
+      on: function(event, handler, ctx) {
+         var handle = { handler: handler, ctx: ctx || null };
+         this.events[event] = this.events[event] || [];
+         this.events[event].push(handle);
+         return handle;
+      },
+      trigger: function(event, data) {
+         if (this.events[event]) {
+            this.events[event].forEach(function(handle) {
+               handle.handler.call(handle.ctx, data);
+            });
+         }
+         return this;
       }
    };
 

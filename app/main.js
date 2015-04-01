@@ -22,8 +22,16 @@ function($, Model, Controller) {
 
       // TODO: Create a model instance
       model = new Model();
+      model.on("change", function(o) {
+         console.log("Change!", o);
+      });
+      model.on("error", function(o) {
+         console.log("Ooops!");
+      });
       model.set("x", 4);
-      console.log(model);
+      model.set("y", "2");  // Should turn it into number 2
+      model.set("y", "Huh??"); // Should produce an error
+      console.log("model: ", model);
       // TODO: Create a controller instance
 
    });
