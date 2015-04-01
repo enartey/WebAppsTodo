@@ -51,7 +51,6 @@ define(function() {
                  ? objectify(key, value)
                  : key;
 
-         console.log("object:", changes);
          if (!this.validate(changes)) {
             this.trigger('error', this);
             return this;
@@ -71,6 +70,15 @@ define(function() {
       },
       // TODO: Implement
       validate: function(changes) {
+         if (changes.hasOwnProperty("x")) {
+            changes.x = parseFloat(changes.x);
+            if (changes.x != changes.x) { return false; }
+         }
+         if (changes.hasOwnProperty("y")) {
+            changes.y = parseFloat(changes.y);
+            if (changes.y != changes.y) { return false; }
+         }
+         .....
          return true;
       },
       // Simple event system
