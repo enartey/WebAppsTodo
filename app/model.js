@@ -41,7 +41,9 @@ define(function() {
    Model.prototype = {
       // TODO: Compute sets result based on the other settings
       compute: function() {
-         this.result = NaN;
+         var f = operators.get(this.operator);
+         this.result = f(this.x, this.y);
+         return this;
       },
       // TODO: Set x, y, operator as appropriate
       // Should accept either key/value or an object
