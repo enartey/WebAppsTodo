@@ -8,7 +8,10 @@ define(function() {
       return {
          get: function(s) { return ops[s]; },
          add: function(s, f) { ops[s] = f; },
-         all: function() { return Object.keys(ops); }
+         all: function() { return Object.keys(ops); },
+         has: function(s) {
+            return ops.hasOwnProperty(s);
+         }
       };
    }());
 
@@ -78,7 +81,11 @@ define(function() {
             changes.y = parseFloat(changes.y);
             if (changes.y != changes.y) { return false; }
          }
-         .....
+         if (changes.hasOwnProperty("operator")) {
+            if (!operators.has(changes.operator)) {
+               return false;
+            }
+         }
          return true;
       },
       // Simple event system

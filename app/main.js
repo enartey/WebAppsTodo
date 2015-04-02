@@ -17,8 +17,6 @@ function($, Model, Controller) {
    var model, controller;
    $(function() {
       console.log("Page loaded!");
-      console.log("Model Constructor:", Model);
-      console.log("Controller Constructor:", Controller);
 
       // TODO: Create a model instance
       model = new Model();
@@ -33,6 +31,5 @@ function($, Model, Controller) {
       model.set("y", "Huh??"); // Should produce an error
       console.log("model: ", model);
       // TODO: Create a controller instance
-
    });
 });

@@ -21,7 +21,6 @@ function($, Handlebars, tmplText) {
       // TODO: Implement rendering
       render: function() {
          // set the html of element to equal result of applying template
-
       }
 
    };
