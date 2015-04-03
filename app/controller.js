@@ -5,6 +5,11 @@ function($, Handlebars, tmplText) {
 
    var template, Controller;
 
+   Handlebars.registerHelper('isSelected', function(current, selected) {
+      return current === selected ? "selected" : "";
+   });
+
+
    template = Handlebars.compile(tmplText);
 
    function Controller(domElement, model) {
@@ -13,7 +18,7 @@ function($, Handlebars, tmplText) {
 
       this.render();
       // TODO: Set up handlers at the this.el level
-
+      this.model.on("change", this.render, this);
       // return this; implicit
    };
 

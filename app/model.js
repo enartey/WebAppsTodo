@@ -28,7 +28,7 @@ define(function() {
       this.set({
          x: Math.random(),
          y: Math.random(),
-         operator: this.operators[0]
+         operator: this.operators[1]
       });
    }
 
