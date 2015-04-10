@@ -1,15 +1,15 @@
 {{! Will be called with a model object }}
 {{! Loaded directly in controller.js }}
 
-<input type="input" value="{{x}}" />
+<input type="input" data-key="x" value="{{x}}" />
 
-<select>
+<select data-key="operator">
 	{{#each operators}}
 	<option value="{{this}}" {{isSelected this ../operator}}>{{this}}</option>
 	{{/each}}
 </select>
 
-<input type="input" value="{{y}}" />
+<input type="input"  data-key="y" value="{{y}}" />
 
 {{! TODO: Equal sign }}
 =

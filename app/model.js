@@ -1,25 +1,10 @@
-define(function() {
+define(["./operators"], function(Operators) {
 
    var Model, operators;
 
-   operators = (function() {
-      var ops = {};
+   operators = Operators.arithmetic();
 
-      return {
-         get: function(s) { return ops[s]; },
-         add: function(s, f) { ops[s] = f; },
-         all: function() { return Object.keys(ops); },
-         has: function(s) {
-            return ops.hasOwnProperty(s);
-         }
-      };
-   }());
-
-   operators.add("+", function(x, y) { return x + y; });
-   operators.add("-", function(x, y) { return x - y; });
-   operators.add("*", function(x, y) { return x * y; });
-   operators.add("/", function(x, y) { return x / y; });
-
+   operators.add("%", function(x,y) { return x % y });
 
    function Model() {
       // The two operands

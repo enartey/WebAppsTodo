@@ -1,0 +1,27 @@
+main {
+	margin: 10% 30%;
+}
+header, footer {
+	text-align: center;
+}
+
+body, * {
+	font-size: 20pt;
+}
+
+h1 {
+	font-size: 156%;
+}
+
+input {
+	width: 5em;
+	text-align: right;
+	padding: 0.2em 0.5em;
+}
+input:hover {
+	background-color: #EEE;
+}
+
+select {
+	padding: 0.2em;
+}
